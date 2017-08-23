@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Number Guesser</title>
+		<link href="main.css" type="text/css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<header>
+			<h1 id="N">Number </h1><h1 id="G">Guesser</h1>
+		</header>
+
+		<main>
+
+			<section class="guesser">
+				<input id="userguess" type="text" name="entry" placeholder="Guess a Number 1-100!" value="" />
+					<div>
+						<input id="GB" type="submit" name="guess" value="Guess" disabled/>
+						<input id="CB" type="submit" name="clear" value="Clear" disabled/>
+					</div>
+			</section>
+
+			<section class="feedback">
+				<p class="highlow">Your last guess was</p>
+				<p class="lastguess" id="lastguess">-</p>
+				<p id="highlow">I'm waiting...</p>
+			</section>
+
+			<button id="reset" disabled>Reset</button>
+
+		</main>
+
+		<script src="behavior.js"></script>
+		<script type="text/javascript" src-"behavior.js"></script>
+	</body>
+
+</html>

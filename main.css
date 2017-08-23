@@ -1,0 +1,139 @@
+/*Universal Styling*/
+body{
+	font-family: 'Open Sans', arial, sans-serif;
+	font-weight: 300;
+	margin: 0px;
+	text-align: center;
+}
+
+/*Header Styling*/
+header{
+	width: 100%;
+	background-color: #404041;
+	text-align: center;
+	padding: 10px;
+}
+
+#N{
+	font-family: 'Open Sans', arial, sans-serif;
+	font-weight: 700;
+	color: #ED458B;
+	display: inline;
+}
+
+#G{
+	font-family: 'Open Sans', arial, sans-serif;
+	font-weight: 300;
+	color: #E6E7E8;
+	display: inline;
+}
+
+/*Form Styling*/
+.guesser{
+	width: 100%;
+    margin: 0px auto;
+    display: inline-block;
+}
+
+#userguess{
+    display: inline-block;
+    margin: 25px auto;
+    height: 25px;
+    width: 30%;
+    font-family: 'Open Sans', arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+#GB{
+	color: #FFF;
+	background-color: #929497;
+	width: 15%;
+	border: 0px solid #FFF;
+	border-radius: 20px;
+	margin: 20px 10px;
+	font-size: 18px;
+    font-weight: 300;
+    font-family: 'Open Sans', arial, sans-serif;
+}
+
+#GB:disabled{
+	background-color: #D0D2D3;
+}
+
+#GB:disabled:hover{
+	background-color: #D0D2D3;
+}
+
+#GB:hover{
+	background-color: #EB008B;
+}
+
+#CB{
+	color: #FFF;
+	background-color: #929497;
+	width: 15%;
+	border: 0px solid #FFF;
+	border-radius: 20px;
+	margin: 20px 10px;
+	font-size: 18px;
+    font-weight: 300;
+    font-family: 'Open Sans', arial, sans-serif;
+}
+
+#CB:disabled{
+	background-color: #D0D2D3;
+}
+
+#CB:disabled:hover{
+	background-color: #D0D2D3;
+}
+
+#CB:hover{
+	background-color: #EB008B;
+}
+
+/*Feedback Styling*/
+.feedback{
+	margin: 10px auto;
+}
+
+#highlow{
+	font-family: 'Open Sans', arial, sans-serif;
+	font-weight: 300;
+	color: #404041;
+	margin: 0px auto;
+}
+
+.lastguess{
+	font-family: 'Open Sans', arial, sans-serif;
+	font-weight: 300;
+	color: #EB008B;
+	font-size: 100px;
+	margin: 0px auto;
+	padding: 0px;
+}
+
+#reset{
+	color: #FFF;
+	background-color: #929497;
+	width: 30%;
+	border: 0px solid #FFF;
+	border-radius: 20px;
+	margin: 0px auto;
+	font-size: 12px;
+    font-weight: 300;
+    font-family: 'Open Sans', arial, sans-serif;	
+}
+
+#reset:disabled{
+	background-color: #D0D2D3;
+}
+
+#reset:disabled:hover{
+	background-color: #D0D2D3;
+}
+
+#reset:hover{
+	background-color: #EB008B;
+}
