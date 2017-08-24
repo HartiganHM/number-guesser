@@ -14,26 +14,43 @@
 
 		<main>
 
-			<section class="guesser">
-				<input id="userguess" type="text" name="entry" placeholder="Guess a Number 1-100!" value="" />
-					<div>
-						<input id="GB" type="submit" name="guess" value="Guess" disabled/>
-						<input id="CB" type="submit" name="clear" value="Clear" disabled/>
-					</div>
+			<section class="rules">
+				<p id="scoring">Set a Range and We'll Pick a Random Number</p>
+				<div class="half-box">
+					<input id="min" type="text" name="min" placeholder="Default = 0" value="0"/>
+					<input id="max" type="text" name="max" placeholder="Default = 100" value="100"/>
+					<input id="enter-values" type="submit" name="enter-values" disabled/>
+				</div>
 			</section>
 
-			<section class="feedback">
-				<p class="highlow">Your last guess was</p>
-				<p class="lastguess" id="lastguess">-</p>
-				<p id="highlow">I'm waiting...</p>
+			<section class="score">
+				<p class="half-box" id="instructions">Each time you guess incorrectly, you will lose 10 points.</p>
+				<div class="half-box">
+					<p>Your score: <span id="score-keeper">-</span> | Possible Points: <span id="current-points">100</span></p>
+				</div>
 			</section>
 
-			<button id="reset" disabled>Reset</button>
+			<section class="the-guess">
+				<input id="userguess" type="text" name="entry" placeholder="Care to Guess?" value="" />
+
+				<div class="buttons">
+					<input id="guess-button" type="submit" name="guess" value="Guess" disabled/>
+					<input id="clear-button" type="submit" name="clear" value="Clear" disabled/>
+				</div>
+
+				<div class="feedback">
+					<p class="highlow">Your last guess was</p>
+					<h2 class="lastguess" id="lastguess">-</h2>
+					<p id="highlow">I'm waiting...</p>
+				</div>
+
+				<button id="reset-button" disabled>Reset</button>
+			</section>
 
 		</main>
 
 		<script src="behavior.js"></script>
-		<script type="text/javascript" src-"behavior.js"></script>
+		<script type="text/javascript" src="behavior.js"></script>
 	</body>
 
 </html>
