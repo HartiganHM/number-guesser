@@ -3,25 +3,34 @@
 /*Variables*/
 var minField = document.getElementById('min');
 var maxField = document.getElementById('max');
-var guessButton = document.getElementById('GB');
+var guessButton = document.getElementById('guess-button');
 var guessInput = document.getElementById('userguess');
-var clearButton = document.getElementById('CB');
-var resetButton = document.getElementById('reset');
+var clearButton = document.getElementById('clear-button');
+var resetButton = document.getElementById('reset-button');
 var highLow = document.getElementById('highlow');
 var lastGuess = document.getElementById('lastguess');
 var enterValues = document.getElementById('enter-values');
 var instructions = document.getElementById('instructions');
+var scoring = document.getElementById('scoring');
 var min = 0;
 var max = 100;
-var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-console.log(randomNumber);
+var randomNumber = generateRandom(min, max);
+console.log("top", randomNumber);
+var score = 0;
+var points = 100;
+var currentPoints = document.getElementById('current-points');
+var scoreKeeper = document.getElementById('score-keeper');
+
+function generateRandom (min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 enterValues.addEventListener('click', function (event) {
-event.preventDefault();
-min = parseInt(minField.value);
-max = parseInt(maxField.value);
-randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-console.log(randomNumber);
+	event.preventDefault();
+	min = parseInt(minField.value);
+	max = parseInt(maxField.value);
+	randomNumber = generateRandom(min, max);
+	console.log(randomNumber);
 })
 
 /*Activate Buttons on Keyup(Initially Disabled)*/
@@ -38,7 +47,8 @@ maxField.addEventListener('keyup', function() {
 /*Buttons*/
 guessButton.addEventListener('click', function (event) {
 	event.preventDefault();
-	estimate ();
+	var guessSubmit = parseInt(guessInput.value);
+	estimate (guessSubmit);
 });
 
 clearButton.addEventListener('click', function (event) {
@@ -52,10 +62,9 @@ resetButton.addEventListener('click', function (event) {
 })
 
 /*Estimator for In and Out of Range Numbers*/
-function estimate() {
-	var guessSubmit = parseInt(guessInput.value);
-	var currentGuess = guessInput.value;
-	  if (isNaN(guessSubmit)) {
+function estimate(guessSubmit) {
+	console.log("guess before if submissions, ", guessSubmit);
+	if (isNaN(guessSubmit)) {
 	  	highLow.innerText = "That's not even a number! Sneaky...";
 	  	lastGuess.innerText = ">:|";
 	  	guessInput.value = "";
@@ -72,26 +81,38 @@ function estimate() {
 		guessInput.setAttribute("placeholder", "Try again, grasshopper.");
 	} else if (guessSubmit > randomNumber) {
 		highLow.innerText = "That is too high";
-		document.querySelector('.lastguess').innerText = currentGuess;
+		document.querySelector('.lastguess').innerText = guessSubmit;
+		points -=10;
+		currentPoints.innerText = points;
+		console.log("HIGH points ", points);
 	} else if (guessSubmit < randomNumber) {
 		highLow.innerText = "That is too low";
-		document.querySelector('.lastguess').innerText = currentGuess;
+		document.querySelector('.lastguess').innerText = guessSubmit;
+		points -=10;
+		currentPoints.innerText = points;
+		console.log("LOW points ", points);
 	} else {
 		highLow.innerText = "BOOM!";
-		document.querySelector('.lastguess').innerText = currentGuess;
+		document.querySelector('.lastguess').innerText = guessSubmit;
+		score += points;
+		points = 100;
+		console.log("score ", score);
+		console.log("won points ", points);
+		scoreKeeper.innerText = score;
 		win();
 	}
 }
 
 /*Disable Buttons on Win*/
 function win() {
-	randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-	console.log(randomNumber);
+	randomNumber = generateRandom(min, max);
+	console.log("win",randomNumber);
 	max = parseInt(maxField.value) + 10;
 	min = parseInt(minField.value) - 10;
 	maxField.value = parseInt(maxField.value) + 10;
 	minField.value = parseInt(minField.value) - 10;
-	instructions.innerHTML = "<h3>You did it! Now a challenge... We've widened your range!</h3><div><sub>No Touching! >:)</sub></div>"
+	instructions.innerText = "You did it! Now a challenge... We've widened your range!"
+	scoring.innerText = "Each time you guess incorrectly, you will lose 10 points. Your range is locked >:)"
 	guessInput.setAttribute("placeholder", "Care to Guess?");
 	guessInput.value = "";
 	enterValues.setAttribute("disabled", "");
@@ -101,13 +122,20 @@ function win() {
 
 /*Reset Button to Generate New Number on Click*/
 function newNumber() {
-	var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-	console.log(randomNumber);
+	randomNumber = generateRandom(min, max);
+	console.log("reset",randomNumber);
 	min = 0;
 	max = 100;
-	maxField.value = "";
-	minField.value = "";
-	instructions.innerHTML = "Set a Range and We'll Pick a Random Number";
+	score = 0;
+	console.log("reset score ", score);
+	scoring.innerText = "Set a Range and We'll Pick a Random Number";
+	points = 100;
+	points.innerText = "100";
+	console.log("reset points ", points);
+	currentPoints.innerText = "100";
+	maxField.value = 100;
+	minField.value = 0;
+	instructions.innerHTML = "Each time you guess incorrectly, you will lose 10 points.";
 	lastGuess.innerText = "-";
 	guessButton.setAttribute("disabled", "");
 	clearButton.setAttribute("disabled", "");
