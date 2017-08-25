@@ -96,6 +96,7 @@ function estimate(guessSubmit) {
 		document.querySelector('.lastguess').innerText = guessSubmit;
 		score += points;
 		points = 100;
+		currentPoints.innerText = 100;
 		console.log("score ", score);
 		console.log("won points ", points);
 		scoreKeeper.innerText = score;
@@ -127,6 +128,7 @@ function newNumber() {
 	min = 0;
 	max = 100;
 	score = 0;
+	scoreKeeper.innerText = "-";
 	console.log("reset score ", score);
 	scoring.innerText = "Set a Range and We'll Pick a Random Number";
 	points = 100;
