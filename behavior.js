@@ -143,6 +143,8 @@ function newNumber() {
 	clearButton.setAttribute("disabled", "");
 	resetButton.setAttribute("disabled", "");
 	guessInput.removeAttribute("disabled");
+	minField.removeAttribute("disabled");
+	maxField.removeAttribute("disabled");
 	guessInput.setAttribute("placeholder", "Care to Guess?");
 	guessInput.value = "";
 	highLow.innerText = "I'm waiting...";
